@@ -1,0 +1,6 @@
+{
+  "name": "CAELUM Aviation Academy",
+  "description": "Professional aviation school management system with instructor and student portals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
