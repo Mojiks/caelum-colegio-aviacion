@@ -1,17 +1,6 @@
-import {
-  Routes,
-  Route,
-  useLocation
-} from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
-import {
-  AnimatePresence,
-  motion
-} from "framer-motion";
-
-import {
-  useEffect
-} from "react";
+import { AnimatePresence } from "framer-motion";
 
 import Landing from "./pages/Landing";
 
@@ -23,64 +12,21 @@ function AnimatedRoutes() {
 
   const location = useLocation();
 
-  useEffect(() => {
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-  }, [location.pathname]);
-
   return (
 
     <AnimatePresence mode="wait">
 
-      <motion.div
-        key={location.pathname}
-        initial={{
-          opacity: 0,
-          y: 40
-        }}
-        animate={{
-          opacity: 1,
-          y: 0
-        }}
-        exit={{
-          opacity: 0,
-          y: -40
-        }}
-        transition={{
-          duration: 0.6,
-          ease: "easeInOut"
-        }}
-      >
+      <Routes location={location} key={location.pathname}>
 
-        <Routes location={location}>
+        <Route path="/" element={<Landing />} />
 
-          <Route
-            path="/"
-            element={<Landing />}
-          />
+        <Route path="/piloto" element={<PilotPage />} />
 
-          <Route
-            path="/piloto"
-            element={<PilotPage />}
-          />
+        <Route path="/sobrecargo" element={<CabinCrewPage />} />
 
-          <Route
-            path="/sobrecargo"
-            element={<CabinCrewPage />}
-          />
+        <Route path="/cursos" element={<CoursesPage />} />
 
-          <Route
-            path="/cursos"
-            element={<CoursesPage />}
-          />
-
-        </Routes>
-
-      </motion.div>
+      </Routes>
 
     </AnimatePresence>
 
