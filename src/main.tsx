@@ -8,24 +8,16 @@ import App from "./App";
 import "./index.css";
 import "./styles/buttons.css";
 
-import { AuthProvider } from "./context/AuthContext";
-
 ReactDOM.createRoot(
   document.getElementById("root")!
 ).render(
-
   <React.StrictMode>
 
     <BrowserRouter>
 
-      <AuthProvider>
-
-        <App />
-
-      </AuthProvider>
+      <App />
 
     </BrowserRouter>
 
   </React.StrictMode>
-
 );
