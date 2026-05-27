@@ -1173,14 +1173,17 @@ useEffect(() => {
             Guadalajara, Jalisco
           </p>
 
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            className="hover:text-cyan-300 transition"
-          >
-            Instagram
-          </a>
-
+         <a
+  href="https://www.instagram.com/caelum.colegio.de.aviacion?igsh=MTk3Z2VnYXJqcXF1ag=="
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    hover:text-pink-400
+    transition
+  "
+>
+  Instagram Oficial
+</a>
         </div>
 
       </div>
