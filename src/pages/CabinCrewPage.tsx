@@ -12,6 +12,26 @@ export default function CabinCrewPage() {
 
       {/* HERO */}
 
+<Link
+  to="/"
+  className="
+    inline-flex
+    items-center
+    gap-2
+    px-4
+    py-2
+    rounded-xl
+    bg-black/40
+    backdrop-blur-md
+    border
+    border-white/10
+    hover:bg-cyan-500/20
+    transition
+  "
+>
+  ← Volver a CAELUM Web
+</Link>
+
       <section
         className="
           relative

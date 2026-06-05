@@ -79,7 +79,7 @@ useEffect(() => {
               </h1>
 
               <p className="text-xs tracking-[0.35em] text-gray-400">
-                AVIATION ACADEMY
+                COLEGIO DE AVIACIÓN
               </p>
 
             </div>
@@ -706,7 +706,7 @@ useEffect(() => {
             </h2>
 
             <p className="text-gray-300 mt-8 text-lg leading-relaxed">
-              CAELUM Aviation Academy ofrece capacitación
+              CAELUM Colegio de Aviación ofrece capacitación
               profesional para pilotos privados y sobrecargos,
               combinando excelencia académica,
               seguridad operacional y aeronaves modernas.
@@ -770,7 +770,7 @@ useEffect(() => {
       >
 
         <h3 className="text-3xl font-black">
-          CAELUM Aviation Academy
+          CAELUM Colegio de Aviación
         </h3>
 
         <p className="text-gray-400 mt-8 leading-relaxed text-lg">

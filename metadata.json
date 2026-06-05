@@ -1,6 +1,6 @@
 {
-  "name": "CAELUM Aviation Academy",
-  "description": "Professional aviation school management system with instructor and student portals.",
+  "name": "CAELUM Colegio de Aviación",
+  "description": "Plataforma de aprendizaje y gestión académica de CAELUM Colegio de Aviación para cursos, evaluaciones y certificaciones.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
