@@ -155,6 +155,21 @@ return (
             Crear Cuenta
           </button>
 
+<div className="mt-6 text-center">
+
+  <span className="text-slate-400">
+    ¿Ya tienes cuenta?
+  </span>
+
+  <Link
+    to="/login"
+    className="ml-2 text-cyan-400 hover:text-cyan-300"
+  >
+    Iniciar sesión
+  </Link>
+
+</div>
+
         </form>
 
       </div>

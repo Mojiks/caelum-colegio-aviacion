@@ -248,22 +248,26 @@ export default function PilotPage() {
 
             <div className="flex flex-col md:flex-row gap-6 justify-center mt-12">
 
-              <button
-                className="
-                  px-10
-                  py-5
-                  rounded-2xl
-                  bg-cyan-400
-                  text-black
-                  font-bold
-                  text-lg
-                  hover:scale-105
-                  transition
-                  shadow-[0_0_40px_rgba(34,211,238,0.4)]
-                "
-              >
-                WhatsApp
-              </button>
+              <a
+  href="https://wa.me/524921077722?text=Hola%20CAELUM,%20me%20interesa%20recibir%20informaci%C3%B3n%20sobre%20la%20carrera%20de%20Piloto%20Privado."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    px-10
+    py-5
+    rounded-2xl
+    bg-cyan-400
+    text-black
+    font-bold
+    text-lg
+    hover:scale-105
+    transition
+    shadow-[0_0_40px_rgba(34,211,238,0.4)]
+    inline-block
+  "
+>
+  WhatsApp
+</a>
 
               <Link
                 to="/"

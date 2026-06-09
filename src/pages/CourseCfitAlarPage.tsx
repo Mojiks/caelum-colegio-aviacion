@@ -7,34 +7,84 @@ export default function CourseCfitAlarPage() {
 
   const [modules, setModules] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
+
+  const COURSE_ID =
+    "4e028154-7431-4ccb-abab-e9a161a7a7db";
 
   useEffect(() => {
     loadModules();
   }, []);
 
-  async function loadModules() {
+  async function enrollCourse() {
 
-  const {
-    data: { user }
-  } = await supabase.auth.getUser();
+    const {
+      data: { user }
+    } = await supabase.auth.getUser();
 
-  console.log("USER:", user);
+    if (!user) {
+      navigate("/login");
+      return;
+    }
 
-  const { data, error } = await supabase
-    .from("modules")
-    .select("*")
-    .order("module_order");
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("id")
+      .eq("email", user.email)
+      .single();
 
-  console.log("DATA:", data);
-  console.log("ERROR:", error);
+    if (!profile) {
+      alert("Perfil no encontrado");
+      return;
+    }
 
-  if (data) {
-    setModules(data);
+    const { data: existing } = await supabase
+      .from("enrollments")
+      .select("id")
+      .eq("profile_id", profile.id)
+      .eq("course_id", COURSE_ID)
+      .maybeSingle();
+
+    if (existing) {
+      alert("Ya estás inscrito en este curso");
+      return;
+    }
+
+    const { error } = await supabase
+      .from("enrollments")
+      .insert({
+        profile_id: profile.id,
+        course_id: COURSE_ID,
+        status: "active",
+        progress_percent: 0
+      });
+
+    if (error) {
+  console.error(error);
+  alert(JSON.stringify(error));
+  return;
+}
+
+    alert("Inscripción realizada correctamente");
   }
 
-  setLoading(false);
-}
+  async function loadModules() {
+
+    const { data, error } = await supabase
+      .from("modules")
+      .select("*")
+      .order("module_order");
+
+    console.log("DATA:", data);
+    console.log("ERROR:", error);
+
+    if (data) {
+      setModules(data);
+    }
+
+    setLoading(false);
+  }
 
   return (
     <div className="min-h-screen bg-[#020817] text-white flex">
@@ -47,12 +97,45 @@ export default function CourseCfitAlarPage() {
           CFIT / ALAR
         </h1>
 
-        <p className="text-slate-400 mb-10">
+        <p className="text-slate-400 mb-6">
           Controlled Flight Into Terrain &
           Approach And Landing Accident Reduction
         </p>
 
-        {loading ? (
+      <div
+  className="
+  bg-[#0B1220]
+  border
+  border-slate-800
+  rounded-xl
+  p-5
+  mb-8
+  "
+>
+
+  <div className="flex justify-between items-center">
+
+    <div>
+
+      <div className="text-slate-400 text-sm">
+        Progreso del Curso
+      </div>
+
+      <div className="text-2xl font-bold">
+        0%
+      </div>
+
+    </div>
+
+    <div className="text-cyan-400">
+      Curso Activo
+    </div>
+
+  </div>
+
+</div>
+      
+              {loading ? (
           <p>Cargando módulos...</p>
         ) : (
           <div className="space-y-4">
@@ -60,15 +143,21 @@ export default function CourseCfitAlarPage() {
             {modules.map((module) => (
 
               <div
-                key={module.id}
-                className="
-                bg-slate-900
-                border
-                border-slate-700
-                rounded-xl
-                p-6
-                "
-              >
+  key={module.id}
+  onClick={() =>
+    navigate(`/modulo/${module.id}`)
+  }
+  className="
+  bg-[#0B1220]
+  border
+  border-slate-800
+  rounded-xl
+  p-6
+  cursor-pointer
+  hover:border-cyan-500/40
+  transition
+  "
+>
 
                 <h2 className="text-2xl font-bold">
                   {module.title}
@@ -83,20 +172,20 @@ export default function CourseCfitAlarPage() {
                 </div>
 
                 <button
-  onClick={() =>
-    navigate(`/modulo/${module.id}`)
-  }
-  className="
-  mt-4
-  bg-cyan-500
-  hover:bg-cyan-600
-  px-5
-  py-2
-  rounded
-  "
->
-  Iniciar
-</button>
+                  onClick={() =>
+                    navigate(`/modulo/${module.id}`)
+                  }
+                  className="
+                  mt-4
+                  bg-cyan-500
+                  hover:bg-cyan-600
+                  px-5
+                  py-2
+                  rounded
+                  "
+                >
+                  Iniciar
+                </button>
 
               </div>
 

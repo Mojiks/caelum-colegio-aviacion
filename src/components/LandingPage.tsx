@@ -1,5 +1,5 @@
 import heroImage from "../assets/images/hero-aviation.jpg";
-
+import IntroScreen from "./IntroScreen";
 import logoImage from "../assets/images/logo-caelum.png";
 
 import aircraft1 from "../assets/images/aircraft-1.jpg";
@@ -11,9 +11,46 @@ import aboutImage from "../assets/images/about-aviation.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 export default function LandingPage() {
+  const navigate = useNavigate();
+
+const [introVideo, setIntroVideo] =
+  useState<string | null>(null);
+
+const [introText, setIntroText] =
+  useState("Colegio de Aviación");
+
+const playPilotIntro = () => {
+
+  setIntroText("Preparado para despegar...");
+  setIntroVideo("/video/pilot-v1.mp4");
+
+  setTimeout(() => {
+    setIntroText("Conquista el cielo");
+  }, 2500);
+
+  setTimeout(() => {
+    navigate("/piloto");
+  }, 6000);
+
+};
+
+const playCabinIntro = () => {
+
+  setIntroText("Bienvenido a bordo...");
+  setIntroVideo("/video/cabin_ready.mp4");
+
+  setTimeout(() => {
+    setIntroText("La excelencia comienza aquí");
+  }, 2500);
+
+  setTimeout(() => {
+    navigate("/sobrecargo");
+  }, 6000);
+
+};
 
   const [mobileMenu, setMobileMenu] = useState(false);
   const [offsetY, setOffsetY] = useState(0);
@@ -30,102 +67,130 @@ useEffect(() => {
 
 }, []);
 
-  return (
+ return (
+  <>
+    {introVideo && (
+      <div className="fixed inset-0 z-[99999] bg-black">
+
+        <video
+  autoPlay
+  playsInline
+  className="w-full h-full object-cover"
+  ref={(video) => {
+    if (video) {
+      video.muted = false;
+      video.volume = 1;
+    }
+  }}
+>
+          <source
+            src={introVideo}
+            type="video/mp4"
+          />
+        </video>
+
+        <div
+          className="
+          absolute
+          inset-0
+          bg-black/40
+          flex
+          items-center
+          justify-center
+          "
+        >
+          <div className="text-center">
+
+            <h1
+              className="
+              text-white
+              text-7xl
+              md:text-9xl
+              font-black
+              "
+            >
+              CAELUM
+            </h1>
+
+            <motion.p
+  key={introText}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="
+    text-cyan-400
+    text-xl
+    md:text-3xl
+    mt-6
+  "
+>
+  {introText}
+</motion.p>
+
+          </div>
+        </div>
+
+      </div>
+    )}
 
     <main className="bg-[#020817] text-white overflow-x-hidden">
 
-      {/* NAVBAR */}
-
-      <header
-        className="
-          fixed
-          top-0
-          left-0
-          w-full
-          z-50
-          backdrop-blur-xl
-          bg-[#020817]/70
-          border-b
-          border-white/10
-        "
-      >
-
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-
-          <div className="flex items-center gap-4">
-
-            <img
-              src={logoImage}
-              alt="CAELUM"
-              className="w-14 h-14 object-contain"
-            />
-
-            <div>
-
-              <h1
-                className="
-                  text-2xl
-                  font-black
-                  tracking-wide
-                  bg-gradient-to-r
-                  from-cyan-300
-                  via-blue-400
-                  to-cyan-200
-                  bg-clip-text
-                  text-transparent
-                "
-              >
-                CAELUM
-              </h1>
-
-              <p className="text-xs tracking-[0.35em] text-gray-400">
-                COLEGIO DE AVIACIÓN
-              </p>
-
-            </div>
-
-          </div>
-
-          <nav className="hidden md:flex items-center gap-10 font-medium">
-
-  <a href="#inicio" className="hover:text-cyan-300 transition">
-    Inicio
-  </a>
-
-  <a href="#programas" className="hover:text-cyan-300 transition">
-    Programas
-  </a>
-
-  <a href="#flota" className="hover:text-cyan-300 transition">
-    Flota
-  </a>
-
-  <a href="#nosotros" className="hover:text-cyan-300 transition">
-    Nosotros
-  </a>
-
-  <a href="#contacto" className="hover:text-cyan-300 transition">
-    Contacto
-  </a>
-
-</nav>
-
-{/* MOBILE BUTTON */}
-
-<button
-  onClick={() => setMobileMenu(true)}
+<header
   className="
-    md:hidden
-    text-3xl
-    text-cyan-300
+    fixed
+    top-0
+    left-0
+    w-full
+    z-50
+    bg-[#020817]/80
+    backdrop-blur-xl
+    border-b
+    border-white/10
   "
 >
-  ☰
-</button>
 
-        </div>
+  <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-      </header>
+    <img
+      src={logoImage}
+      alt="CAELUM"
+      className="h-12"
+    />
+
+    <nav className="hidden md:flex gap-8 font-semibold">
+
+      <a href="#inicio" className="hover:text-cyan-300 transition">
+        Inicio
+      </a>
+
+      <a href="#programas" className="hover:text-cyan-300 transition">
+        Programas
+      </a>
+
+      <a href="#flota" className="hover:text-cyan-300 transition">
+        Flota
+      </a>
+
+      <a href="#nosotros" className="hover:text-cyan-300 transition">
+        Nosotros
+      </a>
+
+      <a href="#contacto" className="hover:text-cyan-300 transition">
+        Contacto
+      </a>
+
+    </nav>
+
+    <button
+      onClick={() => setMobileMenu(true)}
+      className="md:hidden text-3xl text-cyan-300"
+    >
+      ☰
+    </button>
+
+  </div>
+
+</header>
 
 {/* MOBILE MENU */}
 
@@ -162,7 +227,7 @@ useEffect(() => {
           text-cyan-300
         "
       >
-        ×
+      
       </button>
 
       {/* LINKS */}
@@ -374,41 +439,41 @@ useEffect(() => {
             "
           >
 
-            <Link
-              to="/piloto"
-              className="
-                px-10
-                py-5
-                rounded-2xl
-                bg-cyan-400
-                text-black
-                font-bold
-                text-lg
-                hover:scale-105
-                transition
-                shadow-[0_0_50px_rgba(34,211,238,0.5)]
-              "
-            >
-              Carrera Piloto Privado
-            </Link>
+           <button
+  onClick={playPilotIntro}
+  className="
+    px-10
+    py-5
+    rounded-2xl
+    bg-cyan-400
+    text-black
+    font-bold
+    text-lg
+    hover:scale-105
+    transition
+    shadow-[0_0_50px_rgba(34,211,238,0.5)]
+  "
+>
+  Carrera Piloto Privado
+</button>
 
-            <Link
-              to="/sobrecargo"
-              className="
-                px-10
-                py-5
-                rounded-2xl
-                border
-                border-white/10
-                bg-white/5
-                font-bold
-                text-lg
-                hover:bg-white/10
-                transition
-              "
-            >
-              Sobrecargo de Aviación
-            </Link>
+            <button
+  onClick={playCabinIntro}
+  className="
+    px-10
+    py-5
+    rounded-2xl
+    border
+    border-white/10
+    bg-white/5
+    font-bold
+    text-lg
+    hover:bg-white/10
+    transition
+  "
+>
+  Sobrecargo de Aviación
+</button>
 
             <Link
               to="/cursos"
@@ -786,7 +851,7 @@ useEffect(() => {
             </p>
 
             <p className="mt-2">
-              contacto@caelumaviation.com
+                caelum.aviacion@outlook.com
             </p>
           </div>
 
@@ -796,7 +861,7 @@ useEffect(() => {
             </p>
 
             <p className="mt-2">
-              +52 33 0000 0000
+              +52 492 107 7722
             </p>
           </div>
 
@@ -806,9 +871,11 @@ useEffect(() => {
             </p>
 
             <p className="mt-2">
-              Guadalajara, Jalisco
+              Av. García Salinas #321-A
+              Guadalupe, Zacatecas
+              C.P. 98609
             </p>
-          </div>
+          </div> 
 
         </div>
 
@@ -817,7 +884,7 @@ useEffect(() => {
       {/* FORM */}
 
       <form
-        action="https://formsubmit.co/contacto@caelumaviation.com"
+       action="https://formsubmit.co/caelum.aviacion@outlook.com"
         method="POST"
         className="
           rounded-3xl
@@ -1030,7 +1097,7 @@ useEffect(() => {
 {/* WHATSAPP FLOAT */}
 
 <a
-  href="https://wa.me/5210000000000"
+  href="https://wa.me/524921077722?text=Hola%20CAELUM,%20me%20interesa%20recibir%20información%20sobre%20sus%20programas."
   target="_blank"
   rel="noopener noreferrer"
   className="
@@ -1158,32 +1225,67 @@ useEffect(() => {
         <h4 className="text-xl font-bold mb-6">
           Contacto
         </h4>
+<div className="mb-6">
 
+  <p className="text-cyan-300 font-semibold">
+    Horario
+  </p>
+
+  <p className="text-gray-400 mt-2">
+    Lunes a Viernes
+    <br />
+    09:00 - 18:00 hrs
+  </p>
+
+</div>
         <div className="flex flex-col gap-4 text-gray-400">
 
-          <p>
-            contacto@caelumaviation.com
-          </p>
+          <p className="mt-2">
+  caelum.aviacion@outlook.com
+</p>
 
-          <p>
-            +52 33 0000 0000
-          </p>
+          <p className="mt-2">
+  +52 492 107 7722
+</p>
 
-          <p>
-            Guadalajara, Jalisco
-          </p>
+          <p className="mt-2">
+  Av. García Salinas #321-A
+  <br />
+  Guadalupe, Zacatecas
+  <br />
+  C.P. 98609
+</p>  
 
-         <a
-  href="https://www.instagram.com/caelum.colegio.de.aviacion?igsh=MTk3Z2VnYXJqcXF1ag=="
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
-    hover:text-pink-400
-    transition
-  "
->
-  Instagram Oficial
-</a>
+         <div className="flex flex-col gap-3">
+
+  <a
+    href="https://www.instagram.com/caelum.colegio.de.aviacion"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-pink-400 transition"
+  >
+    Instagram
+  </a>
+
+  <a
+    href="https://www.tiktok.com/@caelum.colegiodeaviacion"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-cyan-300 transition"
+  >
+    TikTok
+  </a>
+
+  <a
+    href="https://wa.me/524921077722"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-green-400 transition"
+  >
+    WhatsApp
+  </a>
+
+</div>
         </div>
 
       </div>
@@ -1202,15 +1304,15 @@ useEffect(() => {
         text-gray-500
       "
     >
-      © 2026 CAELUM Aviation Academy. Todos los derechos reservados.
+      © 2026 CAELUM Colegio de Aviación. Todos los derechos reservados.
     </div>
 
   </div>
 
 </footer>
 
-    </main>
-
-  );
+        </main>
+  </>
+);
 
 }

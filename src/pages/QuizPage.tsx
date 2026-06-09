@@ -57,23 +57,126 @@ setQuestions(filtered);
 
     finishQuiz();
   }
+  
 
-  function finishQuiz() {
-    let correct = 0;
+async function finishQuiz() {
 
-    questions.forEach((q, index) => {
-      if (answers[index] === q.correct_answer) {
-        correct++;
-      }
+  console.log("INICIO QUIZ");
+
+  let correct = 0;
+
+  questions.forEach((q, index) => {
+
+    if (answers[index] === q.correct_answer) {
+      correct++;
+    }
+
+  });
+
+  const percentage = Math.round(
+    (correct / questions.length) * 100
+  );
+
+  console.log("SCORE:", percentage);
+
+  const passed = percentage >= 80;
+
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
+
+  console.log("USER:", user);
+
+  if (!user) {
+    console.log("NO USER");
+    return;
+  }
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("email", user.email)
+    .single();
+
+  console.log("PROFILE:", profile);
+
+const result = await supabase
+  .from("quiz_results")
+  .insert({
+    profile_id: profile.id,
+    quiz_id: id,
+    score: percentage,
+    passed: percentage >= 80
+  });
+
+console.log("INSERT RESULT:", result);
+console.log("ERROR:", result.error);
+console.log("DATA:", result.data);
+
+  setScore(percentage);
+  setFinished(true);
+
+  if (percentage >= 80) {
+
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
+
+  if (user) {
+
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("id")
+      .eq("email", user.email)
+      .single();
+
+    if (profile) {
+
+      const { data: enrollment } = await supabase
+  .from("enrollments")
+  .select("*")
+  .eq("profile_id", profile.id)
+  .eq(
+    "course_id",
+    "4e028154-7431-4ccb-abab-e9a161a7a7db"
+  )
+  .single();
+
+if (enrollment) {
+
+  console.log("ENROLLMENT:", enrollment);
+
+  const updateResult = await supabase
+    .from("enrollments")
+    .update({
+      status: "completed",
+      progress_percent: 100,
+      completed_at: new Date().toISOString()
+    })
+    .eq("id", enrollment.id);
+
+  console.log("UPDATE RESULT:", updateResult);
+
+  const certResult = await supabase
+    .from("certificates")
+    .upsert({
+      profile_id: profile.id,
+      course_id:
+        "4e028154-7431-4ccb-abab-e9a161a7a7db",
+      enrollment_id: enrollment.id,
+      certificate_code:
+        "CFIT-" + Date.now(),
+      issued_at: new Date().toISOString(),
+      verification_status: "valid"
     });
 
-    const percentage = Math.round(
-      (correct / questions.length) * 100
-    );
-
-    setScore(percentage);
-    setFinished(true);
+  console.log("CERT RESULT:", certResult);
+console.log("CERT ERROR:", certResult.error);
+}
+    }
   }
+}
+}
 
   if (loading) {
     return (

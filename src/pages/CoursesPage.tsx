@@ -1,203 +1,141 @@
-import heroAviation from "../assets/images/hero-aviation.jpg";
 import { Link } from "react-router-dom";
 
 export default function CoursesPage() {
+
+  const cursos = [
+    {
+      nombre: "CFIT / ALAR",
+      descripcion:
+        "Controlled Flight Into Terrain y prevención de accidentes durante aproximación y aterrizaje."
+    },
+    {
+      nombre: "CRM / ADM",
+      descripcion:
+        "Crew Resource Management y Aeronautical Decision Making para una operación más segura."
+    },
+    {
+      nombre: "JEPPESEN",
+      descripcion:
+        "Interpretación profesional de cartas aeronáuticas y procedimientos instrumentales."
+    },
+    {
+      nombre: "HCRM",
+      descripcion:
+        "Helicopter Crew Resource Management aplicado a operaciones de ala rotativa."
+    },
+    {
+      nombre: "RVSM",
+      descripcion:
+        "Reduced Vertical Separation Minimum para operaciones IFR de alta altitud."
+    },
+    {
+      nombre: "SMS",
+      descripcion:
+        "Sistema de Gestión de Seguridad Operacional aplicado a organizaciones aeronáuticas."
+    }
+  ];
+
   return (
-    <main className="bg-[#020817] text-white">
+    <div className="min-h-screen bg-[#020817] text-white">
 
-      {/* HERO */}
-      <section className="relative min-h-screen overflow-hidden">
+      {/* BOTÓN VOLVER */}
 
-        {/* Imagen */}
-        <img
-          src={heroAviation}
-          alt="CAELUM Aviation"
+      <div className="absolute top-8 left-8 z-50">
+
+        <Link
+          to="/"
           className="
-          absolute
-          inset-0
-          w-full
-          h-full
-          object-cover
-          object-bottom
-          "
-        />
-
-        {/* Overlay */}
-        <div
-          className="
-          absolute
-          inset-0
-          bg-[#020817]/80
-          "
-        />
-
-        {/* Botón regreso */}
-        <div className="absolute top-8 left-8 z-20">
-          <Link
-            to="/"
-            className="
-            px-5
-            py-3
-            rounded-xl
-            bg-black/40
-            backdrop-blur-md
-            border
-            border-white/10
-            hover:bg-cyan-500/20
-            transition
-            "
-          >
-            ← CAELUM Web
-          </Link>
-        </div>
-
-        {/* Login */}
-        <div className="absolute top-8 right-8 z-20">
-          <Link
-            to="/login"
-            className="
-            px-6
-            py-3
-            rounded-xl
-            bg-cyan-500
-            hover:bg-cyan-600
-            font-semibold
-            transition
-            "
-          >
-            Iniciar Sesión
-          </Link>
-        </div>
-
-        {/* Texto principal */}
-        <div
-          className="
-          relative
-          z-10
-          min-h-screen
-          flex
-          items-center
-          justify-center
-          px-6
+          px-4
+          py-2
+          rounded-lg
+          border
+          border-slate-700
+          text-slate-300
+          hover:text-white
+          hover:border-cyan-500
+          transition
           "
         >
-          <div className="text-center max-w-5xl">
+          ← Volver
+        </Link>
 
-            <p
-              className="
-              uppercase
-              tracking-[6px]
-              text-cyan-300
-              text-2xl
-              md:text-4xl
-              font-semibold
-              mb-10
-              "
-            >
-              Plataforma de Formación Online
-            </p>
+      </div>
 
-            <p
-              className="
-              text-gray-300
-              text-2xl
-              md:text-3xl
-              leading-relaxed
-              max-w-4xl
-              mx-auto
-              "
-            >
-              Cursos aeronáuticos online con seguimiento de avance,
-              evaluaciones, soporte académico y certificados digitales.
-            </p>
+      {/* HERO */}
 
-          </div>
+      <section className="pt-36 pb-20 px-6">
+
+        <div className="max-w-7xl mx-auto text-center">
+
+          <p className="text-cyan-400 uppercase tracking-[5px] text-sm mb-6">
+            Formación Aeronáutica
+          </p>
+
+          <h1 className="text-6xl md:text-7xl font-black mb-8">
+            Nuestros Cursos
+          </h1>
+
+          <p className="text-slate-400 text-xl max-w-3xl mx-auto">
+            Plataforma de capacitación aeronáutica diseñada para
+            pilotos, sobrecargos, instructores y profesionales
+            de la aviación.
+          </p>
+
         </div>
 
       </section>
 
-      {/* CURSOS DESTACADOS */}
-      <section className="bg-[#020817] px-8 py-24">
+      {/* CURSOS */}
+
+      <section className="pb-24 px-6">
 
         <div className="max-w-7xl mx-auto">
 
-          <h2 className="text-4xl font-bold mb-12 text-cyan-400">
-            Cursos Destacados
-          </h2>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <Link
-  to="/curso/cfit-alar"
-  className="
-  block
-  bg-black/40
-  backdrop-blur-md
-  border
-  border-white/10
-  rounded-3xl
-  p-6
-  hover:border-cyan-400
-  hover:shadow-lg
-  hover:shadow-cyan-500/20
-  transition
-  duration-300
-  "
->
+            {cursos.map((curso) => (
 
-  <h3 className="text-2xl font-bold mb-4">
-    CFIT / ALAR
-  </h3>
+              <div
+                key={curso.nombre}
+                className="
+                rounded-3xl
+                border
+                border-white/10
+                bg-white/[0.03]
+                backdrop-blur-xl
+                p-8
+                "
+              >
 
-  <p className="text-slate-300 mb-4">
-    Prevención de Controlled Flight Into Terrain
-    y reducción de accidentes en aproximación
-    y aterrizaje.
-  </p>
+                <h2 className="text-3xl font-black mb-6">
+                  {curso.nombre}
+                </h2>
 
-  <div className="text-cyan-400 font-semibold mb-4">
-    Certificado Incluido
-  </div>
+                <p className="text-slate-400 leading-relaxed">
+                  {curso.descripcion}
+                </p>
 
-  <div className="text-white/70 text-sm">
-    Ver detalles →
-  </div>
+                <div className="mt-8">
 
-</Link>
+                  <span
+                    className="
+                    inline-flex
+                    px-4
+                    py-2
+                    rounded-full
+                    bg-cyan-400/10
+                    text-cyan-400
+                    font-bold
+                    "
+                  >
+                    PRÓXIMAMENTE
+                  </span>
 
-            <div className="bg-black/40 backdrop-blur-md border border-white/10 rounded-3xl p-6">
+                </div>
 
-              <h3 className="text-2xl font-bold mb-4">
-                CRM
-              </h3>
-
-              <p className="text-slate-300 mb-4">
-                Crew Resource Management para mejorar
-                comunicación, liderazgo y toma de decisiones.
-              </p>
-
-              <div className="text-cyan-400 font-semibold">
-                Próximamente
               </div>
 
-            </div>
-
-            <div className="bg-black/40 backdrop-blur-md border border-white/10 rounded-3xl p-6">
-
-              <h3 className="text-2xl font-bold mb-4">
-                SMS
-              </h3>
-
-              <p className="text-slate-300 mb-4">
-                Sistema de Gestión de Seguridad Operacional
-                aplicado a operaciones aeronáuticas.
-              </p>
-
-              <div className="text-cyan-400 font-semibold">
-                Próximamente
-              </div>
-
-            </div>
+            ))}
 
           </div>
 
@@ -205,6 +143,6 @@ export default function CoursesPage() {
 
       </section>
 
-    </main>
+    </div>
   );
 }

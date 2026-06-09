@@ -17,6 +17,8 @@ import SupportPage from "./pages/SupportPage";
 import ModulePage from "./pages/ModulePage";
 import LessonPage from "./pages/LessonPage";
 import QuizPage from "./pages/QuizPage";
+import CoursePlayer from "./pages/CoursePlayer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -78,11 +80,20 @@ function AnimatedRoutes() {
   path="/lesson/:id"
   element={<LessonPage />}
 />
+<Route
+  path="/course/:id"
+  element={<CoursePlayer />}
+/>
       </Routes>
     </AnimatePresence>
   );
 }
 
 export default function App() {
-  return <AnimatedRoutes />;
+  return (
+    <>
+      <ScrollToTop />
+      <AnimatedRoutes />
+    </>
+  );
 }
