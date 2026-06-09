@@ -1,5 +1,4 @@
 import heroImage from "../assets/images/hero-aviation.jpg";
-import IntroScreen from "./IntroScreen";
 import logoImage from "../assets/images/logo-caelum.png";
 
 import aircraft1 from "../assets/images/aircraft-1.jpg";
