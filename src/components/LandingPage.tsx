@@ -73,20 +73,16 @@ useEffect(() => {
 
         <video
   autoPlay
+  muted
   playsInline
+  preload="auto"
   className="w-full h-full object-cover"
-  ref={(video) => {
-    if (video) {
-      video.muted = false;
-      video.volume = 1;
-    }
-  }}
 >
-          <source
-            src={introVideo}
-            type="video/mp4"
-          />
-        </video>
+  <source
+    src={introVideo}
+    type="video/mp4"
+  />
+</video>
 
         <div
           className="
