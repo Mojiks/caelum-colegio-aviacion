@@ -69,11 +69,10 @@ useEffect(() => {
  return (
   <>
     {introVideo && (
-      <div className="fixed inset-0 z-[99999] bg-black">
+      <div className="fixed inset-0 z-[99999] bg-[#020817]">
 
         <video
   autoPlay
-  muted
   playsInline
   preload="auto"
   className="w-full h-full object-cover"
