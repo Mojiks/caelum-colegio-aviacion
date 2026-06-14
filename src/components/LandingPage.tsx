@@ -815,6 +815,21 @@ useEffect(() => {
 
     <div className="grid lg:grid-cols-2 gap-14 items-start">
 
+      {/* MAPA */}
+
+<div className="mt-10 rounded-3xl overflow-hidden border border-cyan-400/20">
+  <iframe
+    title="CAELUM Colegio de Aviación"
+    src="https://www.google.com/maps?q=Av%20Garc%C3%ADa%20Salinas%20321-A,%20Las%20Arboledas,%2098097%20Guadalupe,%20Zacatecas&output=embed"
+    width="100%"
+    height="450"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  />
+</div>
+
       {/* INFO */}
 
       <div
