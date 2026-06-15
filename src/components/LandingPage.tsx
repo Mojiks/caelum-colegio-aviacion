@@ -795,7 +795,7 @@ useEffect(() => {
   className="py-32 px-6"
 >
 
-  <div className="max-w-6xl mx-auto">
+  <div className="max-w-7xl mx-auto">
 
     <div className="text-center mb-20">
 
@@ -813,87 +813,97 @@ useEffect(() => {
 
     </div>
 
-    <div className="grid lg:grid-cols-2 gap-14 items-start">
+    <div className="grid lg:grid-cols-2 gap-12 items-start">
 
-      {/* MAPA */}
+      {/* IZQUIERDA */}
 
-<div className="mt-10 rounded-3xl overflow-hidden border border-cyan-400/20">
-  <iframe
-    title="CAELUM Colegio de Aviación"
-    src="https://www.google.com/maps?q=Av%20Garc%C3%ADa%20Salinas%20321-A,%20Las%20Arboledas,%2098097%20Guadalupe,%20Zacatecas&output=embed"
-    width="100%"
-    height="450"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  />
-</div>
+      <div className="space-y-8">
 
-      {/* INFO */}
+        {/* INFO */}
 
-      <div
-        className="
-          rounded-3xl
-          border
-          border-white/10
-          bg-white/[0.03]
-          backdrop-blur-xl
-          p-10
-        "
-      >
+        <div
+          className="
+            rounded-3xl
+            border
+            border-white/10
+            bg-white/[0.03]
+            backdrop-blur-xl
+            p-10
+          "
+        >
 
-        <h3 className="text-3xl font-black">
-          CAELUM Colegio de Aviación
-        </h3>
+          <h3 className="text-3xl font-black">
+            CAELUM Colegio de Aviación
+          </h3>
 
-        <p className="text-gray-400 mt-8 leading-relaxed text-lg">
-          Formación profesional enfocada en seguridad operacional,
-          excelencia académica y desarrollo aeronáutico moderno.
-        </p>
+          <p className="text-gray-400 mt-8 leading-relaxed text-lg">
+            Formación profesional enfocada en seguridad operacional,
+            excelencia académica y desarrollo aeronáutico moderno.
+          </p>
 
-        <div className="mt-12 space-y-6 text-gray-300">
+          <div className="mt-12 space-y-6 text-gray-300">
 
-          <div>
-            <p className="text-cyan-300 font-bold">
-              Correo
-            </p>
+            <div>
+              <p className="text-cyan-300 font-bold">
+                Correo
+              </p>
 
-            <p className="mt-2">
+              <p className="mt-2">
                 caelum.aviacion@outlook.com
-            </p>
+              </p>
+            </div>
+
+            <div>
+              <p className="text-cyan-300 font-bold">
+                Teléfono
+              </p>
+
+              <p className="mt-2">
+                +52 492 107 7722
+              </p>
+            </div>
+
+            <div>
+              <p className="text-cyan-300 font-bold">
+                Ubicación
+              </p>
+
+              <p className="mt-2">
+                Av. García Salinas #321-A
+                <br />
+                Guadalupe, Zacatecas
+                <br />
+                C.P. 98609
+              </p>
+            </div>
+
           </div>
 
-          <div>
-            <p className="text-cyan-300 font-bold">
-              Teléfono
-            </p>
+        </div>
 
-            <p className="mt-2">
-              +52 492 107 7722
-            </p>
-          </div>
+        {/* MAPA */}
 
-          <div>
-            <p className="text-cyan-300 font-bold">
-              Ubicación
-            </p>
+        <div className="rounded-3xl overflow-hidden border border-cyan-400/20">
 
-            <p className="mt-2">
-              Av. García Salinas #321-A
-              Guadalupe, Zacatecas
-              C.P. 98609
-            </p>
-          </div> 
+          <iframe
+            title="CAELUM Colegio de Aviación"
+            src="https://www.google.com/maps?q=Av%20Garc%C3%ADa%20Salinas%20321-A,%20Las%20Arboledas,%2098097%20Guadalupe,%20Zacatecas&output=embed"
+            width="100%"
+            height="500"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
 
         </div>
 
       </div>
 
-      {/* FORM */}
+      {/* DERECHA */}
 
       <form
-       action="https://formsubmit.co/caelum.aviacion@outlook.com"
+        action="https://formsubmit.co/caelum.aviacion@outlook.com"
         method="POST"
         className="
           rounded-3xl
@@ -917,8 +927,6 @@ useEffect(() => {
           name="_template"
           value="table"
         />
-
-        {/* NOMBRE */}
 
         <div>
 
@@ -947,8 +955,6 @@ useEffect(() => {
 
         </div>
 
-        {/* TELEFONO */}
-
         <div>
 
           <label className="block text-sm text-gray-400 mb-3">
@@ -976,8 +982,6 @@ useEffect(() => {
 
         </div>
 
-        {/* EMAIL */}
-
         <div>
 
           <label className="block text-sm text-gray-400 mb-3">
@@ -1004,8 +1008,6 @@ useEffect(() => {
           />
 
         </div>
-
-        {/* PROGRAMA */}
 
         <div>
 
@@ -1046,8 +1048,6 @@ useEffect(() => {
 
         </div>
 
-        {/* MENSAJE */}
-
         <div>
 
           <label className="block text-sm text-gray-400 mb-3">
@@ -1056,7 +1056,7 @@ useEffect(() => {
 
           <textarea
             name="mensaje"
-            rows={5}
+            rows={6}
             className="
               w-full
               rounded-2xl
@@ -1074,8 +1074,6 @@ useEffect(() => {
           />
 
         </div>
-
-        {/* BOTON */}
 
         <button
           type="submit"
