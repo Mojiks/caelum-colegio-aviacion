@@ -10,65 +10,7 @@ export default function CourseCfitAlarPage() {
 
   const navigate = useNavigate();
 
-  const COURSE_ID =
-    "4e028154-7431-4ccb-abab-e9a161a7a7db";
-
-  useEffect(() => {
-    loadModules();
-  }, []);
-
-  async function enrollCourse() {
-
-    const {
-      data: { user }
-    } = await supabase.auth.getUser();
-
-    if (!user) {
-      navigate("/login");
-      return;
-    }
-
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("id")
-      .eq("email", user.email)
-      .single();
-
-    if (!profile) {
-      alert("Perfil no encontrado");
-      return;
-    }
-
-    const { data: existing } = await supabase
-      .from("enrollments")
-      .select("id")
-      .eq("profile_id", profile.id)
-      .eq("course_id", COURSE_ID)
-      .maybeSingle();
-
-    if (existing) {
-      alert("Ya estás inscrito en este curso");
-      return;
-    }
-
-    const { error } = await supabase
-      .from("enrollments")
-      .insert({
-        profile_id: profile.id,
-        course_id: COURSE_ID,
-        status: "active",
-        progress_percent: 0
-      });
-
-    if (error) {
-  console.error(error);
-  alert(JSON.stringify(error));
-  return;
-}
-
-    alert("Inscripción realizada correctamente");
-  }
-
+  
   async function loadModules() {
 
     const { data, error } = await supabase
@@ -170,22 +112,6 @@ export default function CourseCfitAlarPage() {
                 <div className="mt-3 text-sm text-cyan-400">
                   {module.estimated_minutes} minutos
                 </div>
-
-                <button
-                  onClick={() =>
-                    navigate(`/modulo/${module.id}`)
-                  }
-                  className="
-                  mt-4
-                  bg-cyan-500
-                  hover:bg-cyan-600
-                  px-5
-                  py-2
-                  rounded
-                  "
-                >
-                  Iniciar
-                </button>
 
               </div>
 

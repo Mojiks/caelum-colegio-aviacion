@@ -44,7 +44,9 @@ export default function ModulePage() {
       <div className="max-w-6xl mx-auto px-8 py-16">
 
         <button
-onClick={() => navigate("/curso/cfit-alar")}
+onClick={() => 
+  navigate("/curso/cfit-alar")
+}
           className="
           mb-10
           border
