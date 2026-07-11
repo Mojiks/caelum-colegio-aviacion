@@ -3,6 +3,8 @@ import heroImage from "../assets/images/hero-aviation.jpg";
 import { motion } from "framer-motion";
 
 import { Link } from "react-router-dom";
+import cabinImage from "../assets/images/cabin-interior.jpg";
+import cabinRequirements from "../assets/images/cabin-requisitos.jpg";
 
 export default function CabinCrewPage() {
 
@@ -139,86 +141,126 @@ export default function CabinCrewPage() {
 
           <div className="grid lg:grid-cols-2 gap-10">
 
-            {/* REQUISITOS */}
+           {/* REQUISITOS */}
 
-            <motion.div
-              whileHover={{ y: -8 }}
-              className="
-                rounded-3xl
-                border
-                border-cyan-400/20
-                bg-white/5
-                backdrop-blur-xl
-                p-10
-              "
-            >
+<motion.div
+  whileHover={{ y: -8 }}
+  className="
+    relative
+    overflow-hidden
+    rounded-3xl
+    border
+    border-cyan-400/20
+    p-10
+  "
+>
 
-              <p className="text-cyan-300 uppercase tracking-[0.25em] text-sm">
-                Requisitos
-              </p>
+  <img
+    src={cabinRequirements}
+    alt="Sobrecargo"
+    className="
+      absolute
+      inset-0
+      w-full
+      h-full
+      object-cover
+    "
+  />
 
-              <h2 className="text-4xl font-black mt-5">
-                Documentación
-              </h2>
+<div
+  className="
+    absolute
+    inset-0
+    bg-gradient-to-br
+    from-[#020817]/20
+    via-[#020817]/45
+    to-[#020817]/75
+  "
+/>
 
-              <ul className="mt-10 space-y-5 text-gray-300 text-lg">
+  <div className="relative z-10">
 
-                <li>• Mayor de edad</li>
+    <p className="text-cyan-300 uppercase tracking-[0.25em] text-sm">
+      Requisitos
+    </p>
 
-                <li>• Bachillerato terminado</li>
+    <h2 className="text-4xl font-black mt-5">
+      Documentación
+    </h2>
 
-                <li>• Identificación oficial</li>
+    <ul className="mt-10 space-y-5 text-gray-300 text-lg">
+      <li>• Mayor de edad</li>
+      <li>• Bachillerato terminado</li>
+      <li>• Identificación oficial</li>
+      <li>• CURP</li>
+      <li>• Actitud de servicio</li>
+    </ul>
 
-                <li>• CURP</li>
+  </div>
 
-                <li>• Actitud de servicio</li>
+</motion.div>
 
-              </ul>
+{/* CAPACITACIÓN */}
 
-            </motion.div>
+<motion.div
+  whileHover={{ y: -8 }}
+  className="
+    relative
+    overflow-hidden
+    rounded-3xl
+    border
+    border-cyan-400/20
+    p-10
+  "
+>
 
-            {/* CAPACITACIÓN */}
+  <img
+    src={cabinImage}
+    alt="Cabina"
+    className="
+      absolute
+      inset-0
+      w-full
+      h-full
+      object-cover
+    "
+  />
 
-            <motion.div
-              whileHover={{ y: -8 }}
-              className="
-                rounded-3xl
-                border
-                border-cyan-400/20
-                bg-white/5
-                backdrop-blur-xl
-                p-10
-              "
-            >
+  <div
+  className="
+    absolute
+    inset-0
+    bg-gradient-to-br
+    from-[#020817]/20
+    via-[#020817]/45
+    to-[#020817]/75
+  "
+/>
 
-              <p className="text-cyan-300 uppercase tracking-[0.25em] text-sm">
-                Capacitación
-              </p>
+  <div className="relative z-10">
 
-              <h2 className="text-4xl font-black mt-5">
-                Formación
-              </h2>
+    <p className="text-cyan-300 uppercase tracking-[0.25em] text-sm">
+      Capacitación
+    </p>
 
-              <ul className="mt-10 space-y-5 text-gray-300 text-lg">
+    <h2 className="text-4xl font-black mt-5">
+      Formación
+    </h2>
 
-                <li>• CRM</li>
+    <ul className="mt-10 space-y-5 text-gray-300 text-lg">
+      <li>• CRM</li>
+      <li>• Primeros auxilios</li>
+      <li>• Evacuaciones</li>
+      <li>• Seguridad operacional</li>
+      <li>• Atención a pasajeros</li>
+      <li>• Procedimientos de cabina</li>
+    </ul>
 
-                <li>• Primeros auxilios</li>
+  </div>
 
-                <li>• Evacuaciones</li>
+</motion.div>
 
-                <li>• Seguridad operacional</li>
-
-                <li>• Atención a pasajeros</li>
-
-                <li>• Procedimientos de cabina</li>
-
-              </ul>
-
-            </motion.div>
-
-          </div>
-
+</div>
           {/* CTA */}
 
           <div className="mt-24 text-center">

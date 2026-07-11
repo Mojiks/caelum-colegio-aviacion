@@ -3,6 +3,8 @@ import heroImage from "../assets/images/hero-aviation.jpg";
 import { motion } from "framer-motion";
 
 import { Link } from "react-router-dom";
+import cockpitImage from "../assets/images/pilot-cockpit.jpg";
+import pilotRequirements from "../assets/images/pilot-requisitos.jpg";
 
 export default function PilotPage() {
 
@@ -147,91 +149,134 @@ export default function PilotPage() {
 
           <div className="grid lg:grid-cols-2 gap-10">
 
-            {/* REQUISITOS */}
+           {/* REQUISITOS */}
 
-            <motion.div
-              whileHover={{ y: -8 }}
-              className="
-                rounded-3xl
-                border
-                border-cyan-400/20
-                bg-white/5
-                backdrop-blur-xl
-                p-10
-              "
-            >
+<motion.div
+  whileHover={{ y: -8 }}
+  className="
+    relative
+    overflow-hidden
+    rounded-3xl
+    border
+    border-cyan-400/20
+    p-10
+  "
+>
 
-              <p className="text-cyan-300 uppercase tracking-[0.25em] text-sm">
-                Requisitos
-              </p>
+  <img
+    src={cockpitImage}
+    alt="Cabina de piloto"
+    className="
+absolute
+inset-0
+w-full
+h-full
+object-cover
+scale-105
+transition-transform
+duration-700
+"
+  />
 
-              <h2 className="text-4xl font-black mt-5">
-                Documentación
-              </h2>
+  <div
+  className="
+    absolute
+    inset-0
+    bg-gradient-to-br
+    from-[#020817]/20
+    via-[#020817]/45
+    to-[#020817]/75
+  "
+/>
 
-              <ul className="mt-10 space-y-5 text-gray-300 text-lg">
+  <div className="relative z-10">
 
-                <li>• Edad mínima de 18 años</li>
+    <p className="text-cyan-300 uppercase tracking-[0.25em] text-sm">
+      Requisitos
+    </p>
 
-                <li>• Certificado médico aeronáutico</li>
+    <h2 className="text-4xl font-black mt-5">
+      Documentación
+    </h2>
 
-                <li>• Acta de nacimiento</li>
+    <ul className="mt-10 space-y-5 text-gray-300 text-lg">
+      <li>• Edad mínima de 18 años</li>
+      <li>• Certificado médico aeronáutico</li>
+      <li>• Acta de nacimiento</li>
+      <li>• CURP</li>
+      <li>• Comprobante de domicilio</li>
+      <li>• Identificación oficial</li>
+      <li>• Bachillerato terminado</li>
+    </ul>
 
-                <li>• CURP</li>
+  </div>
 
-                <li>• Comprobante de domicilio</li>
+</motion.div>
 
-                <li>• Identificación oficial</li>
+{/* FORMACIÓN */}
 
-                <li>• Bachillerato terminado</li>
+<motion.div
+  whileHover={{ y: -8 }}
+  className="
+    relative
+    overflow-hidden
+    rounded-3xl
+    border
+    border-cyan-400/20
+    p-10
+  "
+>
 
-              </ul>
+  <img
+    src={pilotRequirements}
+    alt="Piloto"
+    className="
+      absolute
+      inset-0
+      w-full
+      h-full
+      object-cover
+    "
+  />
 
-            </motion.div>
+  <div
+  className="
+absolute
+inset-0
+w-full
+h-full
+object-cover
+scale-105
+transition-transform
+duration-700
+"
+/>
 
-            {/* FORMACIÓN */}
+  <div className="relative z-10">
 
-            <motion.div
-              whileHover={{ y: -8 }}
-              className="
-                rounded-3xl
-                border
-                border-cyan-400/20
-                bg-white/5
-                backdrop-blur-xl
-                p-10
-              "
-            >
+    <p className="text-cyan-300 uppercase tracking-[0.25em] text-sm">
+      Formación
+    </p>
 
-              <p className="text-cyan-300 uppercase tracking-[0.25em] text-sm">
-                Formación
-              </p>
+    <h2 className="text-4xl font-black mt-5">
+      Materias
+    </h2>
 
-              <h2 className="text-4xl font-black mt-5">
-                Materias
-              </h2>
+    <ul className="mt-10 space-y-5 text-gray-300 text-lg">
+      <li>• Navegación aérea</li>
+      <li>• Meteorología</li>
+      <li>• Reglamentación aeronáutica</li>
+      <li>• Performance</li>
+      <li>• Factores humanos</li>
+      <li>• Procedimientos operacionales</li>
+      <li>• Horas de vuelo reales</li>
+    </ul>
 
-              <ul className="mt-10 space-y-5 text-gray-300 text-lg">
+  </div>
 
-                <li>• Navegación aérea</li>
+</motion.div>
 
-                <li>• Meteorología</li>
-
-                <li>• Reglamentación aeronáutica</li>
-
-                <li>• Performance</li>
-
-                <li>• Factores humanos</li>
-
-                <li>• Procedimientos operacionales</li>
-
-                <li>• Horas de vuelo reales</li>
-
-              </ul>
-
-            </motion.div>
-
-          </div>
+</div>
 
           {/* CTA */}
 

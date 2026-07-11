@@ -1,11 +1,12 @@
 import heroImage from "../assets/images/hero-aviation.jpg";
 import logoImage from "../assets/images/logo-caelum.png";
-
-import aircraft1 from "../assets/images/aircraft-1.jpg";
-import aircraft2 from "../assets/images/aircraft-2.jpg";
-import aircraft3 from "../assets/images/aircraft-3.jpg";
+import PromotionCarousel from "./PromotionCarousel";
+import fleetComingSoon from "../assets/images/fleet-coming-soon.jpg";
 
 import aboutImage from "../assets/images/about-aviation.jpg";
+import pilotProgram from "../assets/images/pilot-program.jpg";
+import cabinProgram from "../assets/images/cabin-program.jpg";
+import coursesProgram from "../assets/images/courses-program.jpg";
 
 import { motion, AnimatePresence } from "framer-motion";
 import Tilt from "react-parallax-tilt";
@@ -96,12 +97,13 @@ useEffect(() => {
           <div className="text-center">
 
             <h1
-              className="
-              text-white
-              text-7xl
-              md:text-9xl
-              font-black
-              "
+             className="
+text-white
+text-5xl
+md:text-7xl
+font-black
+tracking-tight
+"
             >
               CAELUM
             </h1>
@@ -112,11 +114,11 @@ useEffect(() => {
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8 }}
   className="
-    text-cyan-400
-    text-xl
-    md:text-3xl
-    mt-6
-  "
+text-cyan-400
+text-lg
+md:text-2xl
+mt-5
+"
 >
   {introText}
 </motion.p>
@@ -143,15 +145,15 @@ useEffect(() => {
   "
 >
 
-  <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <div className="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
 
     <img
       src={logoImage}
       alt="CAELUM"
-      className="h-12"
+      className="h-10"
     />
 
-    <nav className="hidden md:flex gap-8 font-semibold">
+    <nav className="hidden md:flex gap-6 text-[15px] font-semibold">
 
       <a href="#inicio" className="hover:text-cyan-300 transition">
         Inicio
@@ -177,7 +179,7 @@ useEffect(() => {
 
     <button
       onClick={() => setMobileMenu(true)}
-      className="md:hidden text-3xl text-cyan-300"
+      className="md:hidden text-2xl text-cyan-300"
     >
       ☰
     </button>
@@ -214,19 +216,19 @@ useEffect(() => {
       <button
         onClick={() => setMobileMenu(false)}
         className="
-          absolute
-          top-8
-          right-8
-          text-5xl
-          text-cyan-300
-        "
+absolute
+top-6
+right-6
+text-4xl
+text-cyan-300
+"
       >
       
       </button>
 
       {/* LINKS */}
 
-      <div className="flex flex-col items-center gap-10 text-3xl font-bold">
+      <div className="flex flex-col items-center gap-8 text-2xl font-bold">
 
         <a
           href="#inicio"
@@ -282,7 +284,7 @@ useEffect(() => {
         id="inicio"
         className="
           relative
-          min-h-screen
+          min-h-[88vh]
           flex
           items-center
           justify-center
@@ -341,17 +343,17 @@ useEffect(() => {
     left-1/2
     -translate-x-1/2
     -translate-y-1/2
-    w-[700px]
-    h-[700px]
+    w-[520px]
+    h-[520px]
     rounded-full
     bg-cyan-400/10
-    blur-[180px]
+    blur-[140px]
   "
 />
 
         {/* CONTENT */}
 
-        <div className="relative z-10 text-center px-6 max-w-6xl">
+        <div className="relative z-10 text-center px-6 max-w-5xl">
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -359,9 +361,9 @@ useEffect(() => {
             transition={{ duration: 1 }}
             className="
               uppercase
-              tracking-[0.4em]
-              text-cyan-300
-              text-sm
+              tracking-[0.3em]
+text-cyan-300
+text-xs
             "
           >
             Formación Aeronáutica Profesional
@@ -372,12 +374,12 @@ useEffect(() => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2 }}
             className="
-              text-6xl
-              md:text-8xl
-              font-black
-              leading-tight
-              mt-8
-            "
+text-5xl
+md:text-7xl
+font-black
+leading-tight
+mt-6
+"
           >
 
             Conquista el cielo
@@ -404,10 +406,10 @@ useEffect(() => {
             transition={{ delay: 1 }}
             className="
               text-gray-300
-              text-xl
-              leading-relaxed
-              mt-10
-              max-w-3xl
+              text-lg
+leading-relaxed
+mt-7
+max-w-2xl
               mx-auto
             "
           >
@@ -416,343 +418,372 @@ useEffect(() => {
             profesional para pilotos y sobrecargos en México.
           </motion.p>
 
-          {/* BOTONES */}
+</div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-            className="
-              mt-14
-              flex
-              flex-col
-              lg:flex-row
-              justify-center
-              items-center
-              gap-6
-            "
-          >
+</section>
 
-           <button
-  onClick={playPilotIntro}
-  className="
-    px-10
-    py-5
-    rounded-2xl
-    bg-cyan-400
-    text-black
-    font-bold
-    text-lg
-    hover:scale-105
-    transition
-    shadow-[0_0_50px_rgba(34,211,238,0.5)]
-  "
->
-  Carrera Piloto Privado
-</button>
+          {/* PROGRAMAS */}
 
-            <button
-  onClick={playCabinIntro}
-  className="
-    px-10
-    py-5
-    rounded-2xl
-    border
-    border-white/10
-    bg-white/5
-    font-bold
-    text-lg
-    hover:bg-white/10
-    transition
-  "
->
-  Sobrecargo de Aviación
-</button>
-
-            <Link
-              to="/cursos"
-              className="
-                px-10
-                py-5
-                rounded-2xl
-                border
-                border-cyan-400/30
-                bg-cyan-400/10
-                text-cyan-300
-                font-bold
-                text-lg
-                hover:bg-cyan-400/20
-                transition
-              "
-            >
-              Nuestros Cursos
-            </Link>
-
-          </motion.div>
-
-        </div>
-
-      </section>
-
-      {/* PROGRAMAS */}
-
-     <motion.section
+<section
   id="programas"
-  initial={{ opacity: 0, y: 80 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1 }}
-  viewport={{ once: true }}
-  className="py-28 px-6 bg-white/[0.02]"
+  className="py-24 px-6"
 >
 
-        <div className="max-w-7xl mx-auto">
+  <div className="max-w-7xl mx-auto">
 
-          <div className="text-center mb-20">
+    <div className="text-center mb-16">
 
-            <p className="uppercase tracking-[0.3em] text-cyan-300 text-sm">
-              Formación Profesional
-            </p>
+      <p className="uppercase tracking-[0.35em] text-cyan-300 text-sm">
 
-            <h2 className="text-5xl font-black mt-4">
-              Nuestros Programas
-            </h2>
+        FORMACIÓN PROFESIONAL
 
-          </div>
+      </p>
 
-          <div className="grid md:grid-cols-3 gap-10">
+      <h2 className="text-4xl md:text-5xl font-black mt-4">
 
-            <Link
-              to="/piloto"
-              className="
-                rounded-3xl
-                border
-                border-white/10
-                bg-white/5
-                p-10
-                hover:bg-cyan-400/10
-                transition
-              "
-            >
+        Nuestros Programas
 
-              <div className="text-5xl mb-6">
-                ✈️
-              </div>
+      </h2>
 
-              <h3 className="text-3xl font-black">
-                Piloto Privado
-              </h3>
+    </div>
 
-              <p className="text-gray-300 mt-6">
-                Formación profesional de ala fija
-                con teoría, simulador y vuelo real.
-              </p>
+    <div className="grid lg:grid-cols-3 gap-8">
 
-            </Link>
+      {/* PILOTO */}
 
-            <Link
-              to="/sobrecargo"
-              className="
-                rounded-3xl
-                border
-                border-white/10
-                bg-white/5
-                p-10
-                hover:bg-cyan-400/10
-                transition
-              "
-            >
+      <motion.div
 
-              <div className="text-5xl mb-6">
-                🛫
-              </div>
+        whileHover={{ y:-8 }}
 
-              <h3 className="text-3xl font-black">
-                Sobrecargo
-              </h3>
+        className="
 
-              <p className="text-gray-300 mt-6">
-                Capacitación enfocada en seguridad,
-                servicio y procedimientos de cabina.
-              </p>
+          relative
 
-            </Link>
+          overflow-hidden
 
-            <Link
-              to="/cursos"
-              className="
-                rounded-3xl
-                border
-                border-cyan-400/20
-                bg-cyan-400/5
-                p-10
-                hover:bg-cyan-400/10
-                transition
-              "
-            >
+          rounded-3xl
 
-              <div className="text-5xl mb-6">
-                🎓
-              </div>
+          border
 
-              <h3 className="text-3xl font-black">
-                Cursos Online
-              </h3>
+          border-cyan-400/20
 
-              <p className="text-gray-300 mt-6">
-                Plataforma digital de capacitación
-                aeronáutica próximamente disponible.
-              </p>
+          h-[420px]
 
-            </Link>
+          cursor-pointer
 
-          </div>
+        "
+
+        onClick={playPilotIntro}
+
+      >
+
+        <img
+
+          src={pilotProgram}
+
+          className="absolute inset-0 w-full h-full object-cover"
+
+        />
+
+        <div
+
+          className="
+
+            absolute
+
+            inset-0
+
+            bg-gradient-to-t
+
+            from-[#020817]
+
+            via-[#020817]/45
+
+            to-transparent
+
+          "
+
+        />
+
+        <div className="absolute bottom-8 left-8 z-10">
+
+          <h3 className="text-3xl font-black">
+
+            Piloto Privado
+
+          </h3>
+
+          <p className="text-gray-300 mt-3">
+
+            Formación profesional de ala fija.
+
+          </p>
+
+          <span className="text-cyan-300 mt-6 block">
+
+            Ver programa →
+
+          </span>
 
         </div>
 
-</motion.section>
+      </motion.div>
+
+      {/* SOBRECARGO */}
+
+      <motion.div
+
+        whileHover={{ y:-8 }}
+
+        className="
+
+          relative
+
+          overflow-hidden
+
+          rounded-3xl
+
+          border
+
+          border-cyan-400/20
+
+          h-[420px]
+
+          cursor-pointer
+
+        "
+
+        onClick={playCabinIntro}
+
+      >
+
+        <img
+
+          src={cabinProgram}
+
+          className="absolute inset-0 w-full h-full object-cover"
+
+        />
+
+        <div
+
+          className="
+
+            absolute
+
+            inset-0
+
+            bg-gradient-to-t
+
+            from-[#020817]
+
+            via-[#020817]/45
+
+            to-transparent
+
+          "
+
+        />
+
+        <div className="absolute bottom-8 left-8 z-10">
+
+          <h3 className="text-3xl font-black">
+
+            Sobrecargo
+
+          </h3>
+
+          <p className="text-gray-300 mt-3">
+
+            Seguridad y servicio de cabina.
+
+          </p>
+
+          <span className="text-cyan-300 mt-6 block">
+
+            Ver programa →
+
+          </span>
+
+        </div>
+
+      </motion.div>
+
+      {/* CURSOS */}
+
+      <motion.div
+
+        whileHover={{ y:-8 }}
+
+        className="
+
+          relative
+
+          overflow-hidden
+
+          rounded-3xl
+
+          border
+
+          border-cyan-400/20
+
+          h-[420px]
+
+          cursor-pointer
+
+        "
+
+        onClick={() => navigate("/cursos")}
+
+      >
+
+        <img
+
+          src={coursesProgram}
+
+          className="absolute inset-0 w-full h-full object-cover"
+
+        />
+
+        <div
+
+          className="
+
+            absolute
+
+            inset-0
+
+            bg-gradient-to-t
+
+            from-[#020817]
+
+            via-[#020817]/45
+
+            to-transparent
+
+          "
+
+        />
+
+        <div className="absolute bottom-8 left-8 z-10">
+
+          <h3 className="text-3xl font-black">
+
+            Cursos Online
+
+          </h3>
+
+          <p className="text-gray-300 mt-3">
+
+            Plataforma digital aeronáutica.
+
+          </p>
+
+          <span className="text-cyan-300 mt-6 block">
+
+            Ver cursos →
+
+          </span>
+
+        </div>
+
+      </motion.div>
+
+    </div>
+
+  </div>
+
+</section>
+    
+{/* PROMOCIONES */}
+
+<section
+  id="promociones"
+  className="py-20 px-6 bg-white/[0.02]"
+>
+  <PromotionCarousel />
+</section>
 
       {/* FLOTA */}
 
-      <section
-        id="flota"
-        className="py-28 px-6"
+<section
+  id="flota"
+  className="py-24 px-6"
+>
+
+  <div className="max-w-6xl mx-auto">
+
+    <div className="text-center mb-14">
+
+      <p className="uppercase tracking-[0.3em] text-cyan-300 text-sm">
+        Nuestra Flota
+      </p>
+
+    </div>
+
+    <div
+      className="
+      relative
+      overflow-hidden
+      rounded-[36px]
+      border
+      border-white/10
+      h-[420px]
+      "
+    >
+
+      <img
+        src={fleetComingSoon}
+        alt="Flota CAELUM"
+        className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        "
+      />
+
+      <div
+        className="
+        absolute
+        inset-0
+        bg-gradient-to-b
+        from-[#020817]/25
+        via-[#020817]/45
+        to-[#020817]/70
+        "
+      />
+
+      <div
+        className="
+        absolute
+        inset-0
+        flex
+        flex-col
+        items-center
+        justify-center
+        text-center
+        px-10
+        "
       >
 
-        <div className="max-w-7xl mx-auto">
+      </div>
 
-          <div className="text-center mb-20">
+    </div>
 
-            <p className="uppercase tracking-[0.3em] text-cyan-300 text-sm">
-              Nuestra Flota
-            </p>
+  </div>
 
-            <h2 className="text-5xl font-black mt-4">
-              Aeronaves Profesionales
-            </h2>
-
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-10">
-
-            <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8}>
-
-              <div
-                className="
-                  rounded-3xl
-                  overflow-hidden
-                  border
-                  border-white/10
-                  bg-white/5
-                "
-              >
-
-                <img
-                  src={aircraft1}
-                  alt="Bristell NG5"
-                  className="h-72 w-full object-cover"
-                />
-
-                <div className="p-8">
-
-                  <h3 className="text-3xl font-black">
-                    Bristell NG5
-                  </h3>
-
-                  <p className="text-gray-300 mt-4">
-                    Aeronave moderna de alto rendimiento
-                    utilizada para formación avanzada.
-                  </p>
-
-                </div>
-
-              </div>
-
-            </Tilt>
-
-            <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8}>
-
-              <div
-                className="
-                  rounded-3xl
-                  overflow-hidden
-                  border
-                  border-white/10
-                  bg-white/5
-                "
-              >
-
-                <img
-                  src={aircraft2}
-                  alt="Cessna 150"
-                  className="h-72 w-full object-cover"
-                />
-
-                <div className="p-8">
-
-                  <h3 className="text-3xl font-black">
-                    Cessna 150
-                  </h3>
-
-                  <p className="text-gray-300 mt-4">
-                    Aeronave ideal para entrenamiento
-                    básico y navegación visual.
-                  </p>
-
-                </div>
-
-              </div>
-
-            </Tilt>
-
-            <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8}>
-
-              <div
-                className="
-                  rounded-3xl
-                  overflow-hidden
-                  border
-                  border-white/10
-                  bg-white/5
-                "
-              >
-
-                <img
-                  src={aircraft3}
-                  alt="Cessna 172"
-                  className="h-72 w-full object-cover"
-                />
-
-                <div className="p-8">
-
-                  <h3 className="text-3xl font-black">
-                    Cessna 172
-                  </h3>
-
-                  <p className="text-gray-300 mt-4">
-                    Aeronave reconocida mundialmente
-                    para navegación y procedimientos avanzados.
-                  </p>
-
-                </div>
-
-              </div>
-
-            </Tilt>
-
-          </div>
-
-        </div>
-
-      </section>
+</section>
 
       {/* ABOUT */}
 
       <section
         id="nosotros"
-        className="py-28 px-6 bg-white/[0.03]"
+        className="py-20 px-6 bg-white/[0.03]"
       >
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
 
           <div>
 
@@ -760,11 +791,11 @@ useEffect(() => {
               Sobre CAELUM
             </p>
 
-            <h2 className="text-5xl font-black mt-4 leading-tight">
+            <h2 className="text-4xl font-black mt-4 leading-tight">
               Formación aeronáutica moderna y profesional
             </h2>
 
-            <p className="text-gray-300 mt-8 text-lg leading-relaxed">
+            <p className="text-gray-300 mt-6 text-base leading-relaxed">
               CAELUM Colegio de Aviación ofrece capacitación
               profesional para pilotos privados y sobrecargos,
               combinando excelencia académica,
@@ -777,10 +808,12 @@ useEffect(() => {
             src={aboutImage}
             alt="About Aviation"
             className="
-              rounded-3xl
-              shadow-2xl
+              rounded-2xl
+              shadow-xl
               border
               border-white/10
+              max-w-[90%]
+              mx-auto
             "
           />
 
@@ -792,56 +825,56 @@ useEffect(() => {
 
 <section
   id="contacto"
-  className="py-32 px-6"
+  className="py-20 px-6"
 >
 
-  <div className="max-w-7xl mx-auto">
+  <div className="max-w-5xl mx-auto">
 
-    <div className="text-center mb-20">
+    <div className="text-center mb-12">
 
       <p className="text-cyan-300 uppercase tracking-[0.3em] text-sm">
         Contacto
       </p>
 
-      <h2 className="text-5xl font-black mt-4">
+      <h2 className="text-4xl font-black mt-3">
         Solicita Información
       </h2>
 
-      <p className="text-gray-300 mt-8 text-lg max-w-3xl mx-auto">
+      <p className="text-gray-300 mt-5 text-base max-w-2xl mx-auto">
         Nuestro equipo puede ayudarte a iniciar tu formación aeronáutica profesional.
       </p>
 
     </div>
 
-    <div className="grid lg:grid-cols-2 gap-12 items-start">
+    <div className="grid lg:grid-cols-2 gap-8 items-start">
 
       {/* IZQUIERDA */}
 
-      <div className="space-y-8">
+      <div className="space-y-6">
 
         {/* INFO */}
 
         <div
           className="
-            rounded-3xl
+            rounded-2xl
             border
             border-white/10
             bg-white/[0.03]
             backdrop-blur-xl
-            p-10
+            p-8
           "
         >
 
-          <h3 className="text-3xl font-black">
+          <h3 className="text-2xl font-black">
             CAELUM Colegio de Aviación
           </h3>
 
-          <p className="text-gray-400 mt-8 leading-relaxed text-lg">
+          <p className="text-gray-400 mt-5 leading-relaxed text-base">
             Formación profesional enfocada en seguridad operacional,
             excelencia académica y desarrollo aeronáutico moderno.
           </p>
 
-          <div className="mt-12 space-y-6 text-gray-300">
+          <div className="mt-8 space-y-5 text-gray-300">
 
             <div>
               <p className="text-cyan-300 font-bold">
@@ -883,13 +916,13 @@ useEffect(() => {
 
         {/* MAPA */}
 
-        <div className="rounded-3xl overflow-hidden border border-cyan-400/20">
+<div className="rounded-2xl overflow-hidden border border-cyan-400/20 shadow-lg">
 
           <iframe
             title="CAELUM Colegio de Aviación"
             src="https://www.google.com/maps?q=Av%20Garc%C3%ADa%20Salinas%20321-A,%20Las%20Arboledas,%2098097%20Guadalupe,%20Zacatecas&output=embed"
             width="100%"
-            height="500"
+            height="380"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
@@ -906,13 +939,13 @@ useEffect(() => {
         action="https://formsubmit.co/caelum.aviacion@outlook.com"
         method="POST"
         className="
-          rounded-3xl
+          rounded-2xl
           border
           border-cyan-400/20
           bg-white/[0.03]
           backdrop-blur-xl
-          p-10
-          space-y-8
+          p-8
+          space-y-6
         "
       >
 
@@ -930,7 +963,7 @@ useEffect(() => {
 
         <div>
 
-          <label className="block text-sm text-gray-400 mb-3">
+          <label className="block text-xs text-gray-400 mb-2">
             Nombre completo
           </label>
 
@@ -940,12 +973,12 @@ useEffect(() => {
             required
             className="
               w-full
-              rounded-2xl
+              rounded-xl
               bg-black/30
               border
               border-white/10
-              px-5
-              py-4
+              px-4
+              py-3
               text-white
               outline-none
               focus:border-cyan-400
@@ -957,7 +990,7 @@ useEffect(() => {
 
         <div>
 
-          <label className="block text-sm text-gray-400 mb-3">
+          <label className="block text-xs text-gray-400 mb-2">
             Teléfono
           </label>
 
@@ -967,12 +1000,12 @@ useEffect(() => {
             required
             className="
               w-full
-              rounded-2xl
+              rounded-xl
               bg-black/30
               border
               border-white/10
-              px-5
-              py-4
+              px-4
+              py-3
               text-white
               outline-none
               focus:border-cyan-400
@@ -984,7 +1017,7 @@ useEffect(() => {
 
         <div>
 
-          <label className="block text-sm text-gray-400 mb-3">
+          <label className="block text-xs text-gray-400 mb-2">
             Correo electrónico
           </label>
 
@@ -994,12 +1027,12 @@ useEffect(() => {
             required
             className="
               w-full
-              rounded-2xl
+              rounded-xl
               bg-black/30
               border
               border-white/10
-              px-5
-              py-4
+              px-4
+              py-3
               text-white
               outline-none
               focus:border-cyan-400
@@ -1011,7 +1044,7 @@ useEffect(() => {
 
         <div>
 
-          <label className="block text-sm text-gray-400 mb-3">
+          <label className="block text-xs text-gray-400 mb-2">
             Programa de interés
           </label>
 
@@ -1019,12 +1052,12 @@ useEffect(() => {
             name="programa"
             className="
               w-full
-              rounded-2xl
+              rounded-xl
               bg-black/30
               border
               border-white/10
-              px-5
-              py-4
+              px-4
+              py-3
               text-white
               outline-none
               focus:border-cyan-400
@@ -1050,21 +1083,21 @@ useEffect(() => {
 
         <div>
 
-          <label className="block text-sm text-gray-400 mb-3">
+          <label className="block text-xs text-gray-400 mb-2">
             Mensaje
           </label>
 
           <textarea
             name="mensaje"
-            rows={6}
+            rows={5}
             className="
               w-full
-              rounded-2xl
+              rounded-xl
               bg-black/30
               border
               border-white/10
-              px-5
-              py-4
+              px-4
+              py-3
               text-white
               outline-none
               focus:border-cyan-400
@@ -1079,15 +1112,15 @@ useEffect(() => {
           type="submit"
           className="
             w-full
-            py-5
-            rounded-2xl
+            py-4
+            rounded-xl
             bg-cyan-400
             text-black
-            font-black
-            text-lg
+            font-semibold
+            text-base
             hover:scale-[1.02]
             transition
-            shadow-[0_0_40px_rgba(34,211,238,0.4)]
+            shadow-[0_0_25px_rgba(34,211,238,0.35)]
           "
         >
           Enviar Solicitud
@@ -1109,20 +1142,20 @@ useEffect(() => {
   rel="noopener noreferrer"
   className="
     fixed
-    bottom-6
-    right-6
+    bottom-5
+    right-5
     z-50
-    w-16
-    h-16
+    w-14
+    h-14
     rounded-full
     bg-cyan-400
     text-black
     flex
     items-center
     justify-center
-    text-3xl
-    shadow-[0_0_40px_rgba(34,211,238,0.5)]
-    hover:scale-110
+    text-2xl
+    shadow-[0_0_25px_rgba(34,211,238,0.35)]
+    hover:scale-105
     transition
   "
 >
@@ -1137,14 +1170,14 @@ useEffect(() => {
     border-white/10
     bg-black/30
     backdrop-blur-xl
-    py-16
+    py-12
     px-6
   "
 >
 
-  <div className="max-w-7xl mx-auto">
+  <div className="max-w-6xl mx-auto px-6">
 
-    <div className="grid md:grid-cols-3 gap-14">
+    <div className="grid md:grid-cols-3 gap-10">
 
       {/* BRAND */}
 
@@ -1155,14 +1188,14 @@ useEffect(() => {
           <img
             src={logoImage}
             alt="CAELUM"
-            className="w-14 h-14 object-contain"
+            className="w-12 h-12 object-contain"
           />
 
           <div>
 
             <h3
               className="
-                text-2xl
+                text-xl
                 font-black
                 bg-gradient-to-r
                 from-cyan-300
@@ -1183,7 +1216,7 @@ useEffect(() => {
 
         </div>
 
-        <p className="text-gray-400 mt-8 leading-relaxed">
+        <p className="text-gray-400 mt-6 text-sm leading-relaxed">
           Formación aeronáutica profesional
           enfocada en excelencia operativa,
           seguridad y desarrollo profesional.
@@ -1195,7 +1228,7 @@ useEffect(() => {
 
       <div>
 
-        <h4 className="text-xl font-bold mb-6">
+        <h4 className="text-lg font-bold mb-4">
           Navegación
         </h4>
 
@@ -1229,33 +1262,33 @@ useEffect(() => {
 
       <div>
 
-        <h4 className="text-xl font-bold mb-6">
+        <h4 className="text-lg font-bold mb-4">
           Contacto
         </h4>
-<div className="mb-6">
+<div className="mb-5">
 
   <p className="text-cyan-300 font-semibold">
     Horario
   </p>
 
-  <p className="text-gray-400 mt-2">
+  <p className="text-gray-400 text-sm mt-1">
     Lunes a Viernes
     <br />
     09:00 - 18:00 hrs
   </p>
 
 </div>
-        <div className="flex flex-col gap-4 text-gray-400">
+        <div className="flex flex-col gap-3 text-sm text-gray-400">
 
-          <p className="mt-2">
+          <p className="text-sm">
   caelum.aviacion@outlook.com
 </p>
 
-          <p className="mt-2">
+          <p className="text-sm">
   +52 492 107 7722
 </p>
 
-          <p className="mt-2">
+          <p className="text-sm">
   Av. García Salinas #321-A
   <br />
   Guadalupe, Zacatecas
@@ -1263,7 +1296,7 @@ useEffect(() => {
   C.P. 98609
 </p>  
 
-         <div className="flex flex-col gap-3">
+         <div className="flex flex-col gap-2 text-sm">
 
   <a
     href="https://www.instagram.com/caelum.colegio.de.aviacion"
@@ -1303,8 +1336,8 @@ useEffect(() => {
 
     <div
       className="
-        mt-16
-        pt-8
+        mt-10
+        pt-6
         border-t
         border-white/10
         text-center
