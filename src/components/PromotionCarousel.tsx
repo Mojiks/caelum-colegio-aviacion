@@ -12,23 +12,23 @@ export default function PromotionCarousel() {
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (paused) return;
+  if (paused) return;
 
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % promociones.length);
-    }, 4000);
+  const interval = setInterval(() => {
+    setCurrent((prev) => {
+      if (prev >= promociones.length - 1) {
+        return 0;
+      }
 
-    return () => clearInterval(interval);
-  }, [paused]);
+      return prev + 1;
+    });
+  }, 5000);
 
-  const previous = () =>
-    setCurrent((prev) => (prev - 1 + promociones.length) % promociones.length);
-
-  const next = () =>
-    setCurrent((prev) => (prev + 1) % promociones.length);
+  return () => clearInterval(interval);
+}, [paused]);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <section className="max-w-7xl mx-auto px-4 md:px-6 py-16">
 
       <div className="text-center mb-8">
 
@@ -50,18 +50,18 @@ export default function PromotionCarousel() {
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         className="
-relative
-overflow-hidden
-rounded-3xl
-border
-border-cyan-400/20
-bg-[#061120]
-aspect-[21/8]
-max-h-[360px]
-max-w-[1180px]
-mx-auto
-shadow-2xl
-"
+          relative
+          overflow-hidden
+          rounded-2xl
+          border
+          border-cyan-400/20
+          bg-[#061120]
+          w-full
+          aspect-[18/8]
+          max-h-[380px]
+          md:max-h-[430px]
+          shadow-xl
+        "
       >
 
         <AnimatePresence mode="wait">
@@ -75,14 +75,14 @@ shadow-2xl
             exit={{ opacity: 0, scale: 1.02 }}
             transition={{ duration: 0.9 }}
             className="
-absolute
-inset-0
-w-full
-h-full
-object-contain
-object-center
-bg-black
-"
+              absolute
+              inset-0
+              w-full
+              h-full
+              object-contain
+              object-center
+              bg-black
+            "
           />
 
         </AnimatePresence>
@@ -98,47 +98,18 @@ bg-black
           "
         />
 
-        <button
-          onClick={previous}
+        {/* INDICADORES */}
+
+        <div
           className="
             absolute
-            left-5
-            top-1/2
-            -translate-y-1/2
-            w-12
-            h-12
-            rounded-full
-            bg-black/40
-            backdrop-blur-md
-            hover:bg-cyan-500
-            transition
-            text-lg
+            bottom-3
+            left-1/2
+            -translate-x-1/2
+            flex
+            gap-2
           "
         >
-          ❮
-        </button>
-
-        <button
-          onClick={next}
-          className="
-            absolute
-            right-5
-            top-1/2
-            -translate-y-1/2
-            w-12
-            h-12
-            rounded-full
-            bg-black/40
-            backdrop-blur-md
-            hover:bg-cyan-500
-            transition
-            text-lg
-          "
-        >
-          ❯
-        </button>
-
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
 
           {promociones.map((_, index) => (
 
